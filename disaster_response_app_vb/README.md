@@ -15,10 +15,10 @@
 
 ## Screenshots
 This is the frontpage:
-![Alt text](https://github.com/vbardarova/nanodegree/blob/master/disaster_response_app_vb/screenshot1.png?raw=true "Screenshot1")
+![Alt text](https://github.com/vbardarova/nanodegree/blob/master/disaster_response_app_vb/screenshot2.png?raw=true "Screenshot2")
 
 By inputting a word, you can check its category:
-![Alt text](https://github.com/vbardarova/nanodegree/blob/master/disaster_response_app_vb/screenshot2.png?raw=true "Screenshot2")
+![Alt text](https://github.com/vbardarova/nanodegree/blob/master/disaster_response_app_vb/screenshot1.png?raw=true "Screenshot1")
 
 
 ## Content
