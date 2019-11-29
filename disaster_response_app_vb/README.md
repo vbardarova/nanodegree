@@ -23,25 +23,24 @@ By inputting a word, you can check its category:
 
 ## Content
 Files:
+
+- ML Pipeline Preparation.ipynb # ML exploration
+- run.py  """Flask file that runs app"""
+- process_data.py
+- train_classifier.py
+
 - app
 | - template
-| |- master.html  # main page of web app
-| |- go.html  # classification result page of web app
-|- run.py  # Flask file that runs app
+| |- master.html  """ main page of web app"""
+| |- go.html  """classification result page of web app"""
 
 - data
-|- disaster_categories.csv  # data to process
-|- disaster_messages.csv  # data to process
-|- process_data.py
-|- DisasterResponse.db   # database to save clean data to
-
+|- categories.csv  """ data to process """
+|- messages.csv  """ data to process """
+|- ETL Pipeline Preparation.ipynb # etl exploration
 - models
-|- train_classifier.py
-|- disaster_model.pkl  # saved model
 
 - notebooks
-|- ETL Pipeline Preparation.ipynb # etl exploration
-|- ML Pipeline Preparation.ipynb # ML exploration
 
 - README.md
 
