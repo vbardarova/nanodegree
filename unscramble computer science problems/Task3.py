@@ -57,7 +57,10 @@ for call in bangalore_called:
         called_numbers.append(call[0:4])
     clean_calls = sorted(list(set(called_numbers)))
     
-print(f"The numbers called by people in Bangalore have codes: {clean_calls}")
+print(f"The numbers called by people in Bangalore have codes:")
+
+for i in clean_calls:
+    print(i)
 
 total_calls = []
 

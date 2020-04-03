@@ -38,5 +38,8 @@ for call in calling_numbers:
         if call not in texts_numbers_list:
             telemarketers.append(call)
 
-print(f"These numbers could be telemarketers: {telemarketers}")
-print(f"Total potential telemarketers: {len(telemarketers)}")
+print(f"These numbers could be telemarketers:")
+telemarketers_list = sorted(telemarketers)
+for i in telemarketers_list:
+    print(i)
+

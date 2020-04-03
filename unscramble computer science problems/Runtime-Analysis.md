@@ -39,11 +39,10 @@ Space Complexity: O(n)
     - Complexity: O(n)
 - Addting to a value, e.g `+= int(13)`
     - Complexity: O(n)
-- Max of a list,  e.g `max (dict, key=lambda ..) `
-    - Complexity: O(n)
+
 
 ### Complexity
-Time Complexity: O(n^3)
+Time Complexity: O(n+n)=>0(n)
 Space Complexity: O(n^3)
 
 
@@ -61,8 +60,8 @@ Space Complexity: O(n^3)
 - Sorting , e.g `sorted()`
     - Complexity: n(log n)
 ```
-Time Complexity: O(2n^2)
-Space Complexity: O(2n^2)
+Time Complexity: O(n + n + (n + nlong)) => O(n^2 log n).
+Space Complexity: O(n))
 ```
 ## Task4
 
@@ -73,10 +72,12 @@ Space Complexity: O(2n^2)
     - Complexity: O(n)
 - Append operation, e.g `l.append(5)`
     - Complexity: O(1)
+- Sorting , e.g `sorted()`
+    - Complexity: n(log n)
     
 ```
-Time Complexity: O(n^7)
-Space Complexity: O(n^7)
+Time Complexity: O(n)
+Space Complexity: O(n)
 ```
 
 

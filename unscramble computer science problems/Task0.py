@@ -4,8 +4,6 @@ It's ok if you don't understand how to read files.
 """
 import csv
 
-import pandas as pd
-
 
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
@@ -24,16 +22,5 @@ Print messages:
 "Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds"
 """
 
-
-calls=pd.DataFrame(calls, columns=["calling_number","receiving_number","timestamp","duration"])
-max_timestamp=calls["timestamp"].max()
-last_call = calls[calls["timestamp"] ==max_timestamp]
-
-print(f'Last record of calls, {last_call["calling_number"].iloc[0]} calls {last_call["receiving_number"].iloc[0]} at time  {last_call["timestamp"].iloc[0]}, lasting  {last_call["duration"].iloc[0]} seconds')
-
-texts=pd.DataFrame(texts, columns=["sending_number","receiving_number","timestamp"])
-
-min_timestamp=texts["timestamp"].max()
-first_text = texts[texts["timestamp"] ==min_timestamp]
-
-print(f'First record of texts,{first_text["sending_number"].iloc[0]} calls {first_text["receiving_number"].iloc[0]} at time  {first_text["timestamp"].iloc[0]}')
+print('First record of texts, {0} texts {1} at time {2}'.format(*texts[0])) and
+print('Last record of calls, {0} calls {1} at time {2}, lasting {3} seconds'.format(*calls[-1]))
