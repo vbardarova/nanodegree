@@ -4,8 +4,8 @@ The algorithm here is recursion. We check whether the name of the group is tha s
 
     
 ```
-Time Complexity: O(#of groups in a group * #of users in each of those groups)
-Space Complexity: O(#of groups in a group * #of users in each of those groups)
+Time Complexity: O(the number of users)
+Space Complexity: O(n)
 ```
 
 

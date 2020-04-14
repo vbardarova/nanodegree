@@ -73,7 +73,7 @@ if __name__ == "__main__":
 
 
     # Test 3
-    a_great_sentence = "AAAAAAAA"
+    a_great_sentence = "UGEUVEBI:"
 
     print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
     print ("The content of the data is: {}\n".format(a_great_sentence))

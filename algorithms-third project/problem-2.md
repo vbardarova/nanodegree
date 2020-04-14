@@ -4,8 +4,8 @@ First step is to check if the file path is valied. If it is, then 2 lists are us
 
     
 ```
-Time Complexity: O(#of terminal nodes in the file hierarchy tree)
-Space Complexity: O(#of files with the desired extension)
+Time Complexity: O(n)
+Space Complexity: O(n)
 ```
 
 
