@@ -1,61 +1,35 @@
-class Group(object):
-    def __init__(self, _name):
-        self.name = _name
-        self.groups = []
-        self.users = []
-
-    def add_group(self, group):
-        self.groups.append(group)
-
-    def add_user(self, user):
-        self.users.append(user)
-
-    def get_groups(self):
-        return self.groups
-
-    def get_users(self):
-        return self.users
-
-    def get_name(self):
-        return self.name
-
-
-parent = Group("parent")
-child = Group("child")
-sub_child = Group("subchild")
-
-sub_child_user = "sub_child_user"
-sub_child.add_user(sub_child_user)
-
-child.add_group(sub_child)
-parent.add_group(child)
-
-
-def is_user_in_group(user, group):
+def sort_012(input_list):
     """
-    Return True if user is in the group, False otherwise.
+    Given an input array consisting on only 0, 1, and 2, sort the array in a single traversal.
 
     Args:
-      user(str): user name/id
-      group(class:Group): group to check user membership against
+       input_list(list): List to be sorted
     """
-    if isinstance(group, str):
-        return "Group must be instance of group"
+    try:
+        _frequency = [0] * 3
+        for num in input_list:
+            _frequency[num] += 1
+        new_list = []
+        for i in range(3):
+            new_list.extend([i] * _frequency[i])
+        return new_list
+    except Exception as e:
+        print("Error => {}".format(e))
+        return []
 
-    if user == group:
-        return "Error: can't pass group as User"
+def test_function(test_case):
+    sorted_array = sort_012(test_case)
+    print(sorted_array)
+    if sorted_array == sorted(test_case):
+        print("Pass")
+    else:
+        print("Fail")
 
-    if user == group.get_name():
-        return True
-    if user in group.get_users():
-        return True
-    for grp in group.get_groups():
-        return is_user_in_group(user, grp)
-    return False
-
-#tests
-print(is_user_in_group("child", child))  # True
-print(is_user_in_group("", child))  # False
-print(is_user_in_group("sub_child_user", parent))  # True
-print(is_user_in_group("child", "child")) # group must be instance of group
-print(is_user_in_group(child, child)) # Error: can't pass group as User
+test_function([0, 0, 2, 2, 2, 1, 1, 1, 2, 0, 2])
+test_function([2, 1, 2, 0, 0, 2, 1, 0, 1, 0, 0, 2, 2, 2, 1, 2, 0, 0, 0, 2, 1, 0, 2, 0, 0, 1])
+test_function([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2])
+test_function([])
+test_function([0])
+test_function([1])
+test_function([2])
+test_function([1,2])

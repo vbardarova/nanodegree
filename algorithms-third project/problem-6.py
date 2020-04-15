@@ -1,141 +1,29 @@
-class Node:
-    def __init__(self, value):
-        self.value = value
-        self.next = None
+def get_min_max(ints):
+    """
+    Return a tuple(min, max) out of list of unsorted integers.
 
-    def __repr__(self):
-        return str(self.value)
+    Args:
+       ints(list): list of integers containing one or more integers
+    """
+    if not ints:
+        return
 
+    answer = [-float('inf'), float('inf')]
+    for _int in ints:
+        if _int > answer[0]:
+            answer[0] = _int
+        if _int < answer[1]:
+            answer[1] = _int
+    return (answer[1], answer[0])
 
-class LinkedList:
-    def __init__(self):
-        self.head = None
+## Example Test Case of Ten Integers
+import random
 
-    def __str__(self):
-        cur_head = self.head
-        out_string = ""
-        while cur_head:
-            out_string += str(cur_head.value) + " -> "
-            cur_head = cur_head.next
-        return out_string
+l = [i for i in range(0, 10)]  # a list containing 0 - 9
+random.shuffle(l)
 
-
-    def append(self, value):
-
-        if self.head is None:
-            self.head = Node(value)
-            return
-
-        node = self.head
-        while node.next:
-            node = node.next
-
-        node.next = Node(value)
-
-    def size(self):
-        size = 0
-        node = self.head
-        while node:
-            size += 1
-            node = node.next
-
-        return size
-
-def create_set(linkedlist):
-    set1 = set()
-    node = linkedlist.head
-    while node:
-        set1.add(node.value)
-        node = node.next
-    return set1
-
-def union(llist_1, llist_2):
-    list_1=create_set(llist_1)
-    list_2=create_set(llist_2)
-    un_set = list_1.union(list_2)
-    union_list = LinkedList()
-    for el in un_set:
-        union_list.append(el)
-    return union_list
-
-def intersection(llist_1, llist_2):
-    set1 = create_set(llist_1)
-    set2 = create_set(llist_2)
-    inter = set1.intersection(set2)
-    inter_list = LinkedList()
-    for el in inter:
-        inter_list.append(el)
-    return inter_list
-
-
-# Test case 1
-
-linked_list_1 = LinkedList()
-linked_list_2 = LinkedList()
-
-element_1 = [3,2,4,35,6,65,6,4,3,21]
-element_2 = [6,32,4,9,6,1,11,21,1]
-
-for i in element_1:
-    linked_list_1.append(i)
-
-for i in element_2:
-    linked_list_2.append(i)
-
-print (union(linked_list_1,linked_list_2))
-print (intersection(linked_list_1,linked_list_2))
-
-
-# Test case 2
-
-linked_list_3 = LinkedList()
-linked_list_4 = LinkedList()
-
-element_1 = [3,2,4,35,6,65,6,4,3,23]
-element_2 = [1,7,8,9,11,21,1]
-
-for i in element_1:
-    linked_list_3.append(i)
-
-for i in element_2:
-    linked_list_4.append(i)
-
-print (union(linked_list_3,linked_list_4))
-print (intersection(linked_list_3,linked_list_4))
-
-
-
-# Test case 3
-
-linked_list_5 = LinkedList()
-linked_list_6 = LinkedList()
-
-element_1 = []
-element_2 = []
-
-for i in element_1:
-    linked_list_5.append(i)
-
-for i in element_2:
-    linked_list_6.append(i)
-
-print (union(linked_list_5,linked_list_6))
-print (intersection(linked_list_5,linked_list_6))
-
-
-# Test case 4
-
-linked_list_7 = LinkedList()
-linked_list_8 = LinkedList()
-
-element_1 = [1,2,3,4,5,6]
-element_2 = []
-
-for i in element_1:
-    linked_list_7.append(i)
-
-for i in element_2:
-    linked_list_8.append(i)
-
-print (union(linked_list_7,linked_list_8))
-print (intersection(linked_list_7,linked_list_8))
+print ("Pass" if ((0, 9) == get_min_max(l)) else "Fail")
+print ("Pass" if ((1, 1) == get_min_max( [1] ) ) else "Fail")
+print ("Pass" if ((0, 1) == get_min_max([1,0]) ) else "Fail")
+print ("Pass" if ((4, 4) == get_min_max([4,4])) else "Fail")
+print ("Pass" if ((6, 9) == get_min_max([8,6,9])) else "Fail")

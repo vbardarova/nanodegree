@@ -1,9 +1,13 @@
-# Problem 1: Least Recently Used Cache
+# Problem 1: 
 
-We have used OrderDict to assign values for specific keys. The algorithm will get the value if it's existent.The algorithm will attempt assigning value but will pop the last one if the list is at capacity.
+Calculated the floored square root of a number using binary search to solve the problem. The values of i * i is monotonically increasing, so the problem can be solved using binary search.
 
-Time Complexity: o(1) for both set and get
-Space Complexity:O(n)
+Time complexity: O(log n).
+The time complexity of binary search is O(log n).
+
+Space Complexity: O(1).
+Constant extra space is needed.
+
 
 
 

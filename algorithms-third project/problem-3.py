@@ -1,89 +1,69 @@
-import sys
+def sort(input_list, begin_index, end_index):
+    left_index = begin_index
+    pivot_index = end_index
+    pivot_value = input_list[pivot_index]
 
-def huffman_encoding(data):
-    global huff
-    huff = {}
-    for char in data:
-        huff[char] = huff.get(char, 0) + 1
-    tree = {}
-    temp = '1'
-    for num in sorted(huff.items(), key=lambda x: x[1]):
-        tree[num[0]] = temp
-        temp = '0' + temp
+    while left_index < pivot_index:
 
-    encode = ''
-    for d in data:
-        encode += tree[d]
-    return encode, tree
+        left_value = input_list[left_index]
+        
+        if left_value < pivot_value:
+            left_index += 1
+            continue
 
+        input_list[left_index] = input_list[pivot_index-1]
+        input_list[pivot_index-1] = pivot_value
+        input_list[pivot_index] = left_value
+        pivot_index -= 1
 
-def huffman_decoding(data, tree):
-    huff = {}
-    for char in tree:
-        huff[tree[char]] = char
-
-    temp = ''
-    decode = ''
-    for d in data:
-        if d == '1':
-            decode += huff[temp + d]
-            temp = ''
-        else:
-            temp += d
-    return decode
-
-if __name__ == "__main__":
-    codes = {}
-
-    # Test 1
-    a_great_sentence = "The bird is the word"
-
-    print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
-    print ("The content of the data is: {}\n".format(a_great_sentence))
-
-    encoded_data, tree = huffman_encoding(a_great_sentence)
-
-    print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
-    print ("The content of the encoded data is: {}\n".format(encoded_data))
-
-    decoded_data = huffman_decoding(encoded_data, tree)
-
-    print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
-    print ("The content of the encoded data is: {}\n".format(decoded_data))
+    return pivot_index
 
 
+def sort_all(input_list, begin_index, end_index):
+    if end_index <= begin_index:
+        return
+
+    pivot_index = sort(input_list, begin_index, end_index)
+    sort_all(input_list, begin_index, pivot_index - 1)
+    sort_all(input_list, pivot_index + 1, end_index)
 
 
+def quick_sort(input_list):
+    sort_all(input_list, 0, len(input_list)-1)
+    return input_list
 
-    # Test 2
-    a_great_sentence = "12345667"
+def rearrange_digits(arr): 
+  
+    # sort the array 
+    sorted_array = quick_sort(arr)
+    arr = sorted_array[::-1]
+  
+    # let two numbers be a and b 
+    a = 0; b = 0
+    for i in range(len(arr)): 
+      
+        # Fill a and b with every alternate 
+        # digit of input array 
+        if (i % 2 != 0): 
+            a = a * 10 + arr[i] 
+        else: 
+            b = b * 10 + arr[i] 
+  
+    # return the sum 
+    return [a,b] 
 
-    print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
-    print ("The content of the data is: {}\n".format(a_great_sentence))
+def test_function(test_case):
+    output = rearrange_digits(test_case[0])
+    solution = test_case[1]
+    if sum(output) == sum(solution):
+        print("Pass")
+    else:
+        print("Fail")
 
-    encoded_data, tree = huffman_encoding(a_great_sentence)
-
-    print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
-    print ("The content of the encoded data is: {}\n".format(encoded_data))
-
-    decoded_data = huffman_decoding(encoded_data, tree)
-
-    print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
-    print ("The content of the encoded data is: {}\n".format(decoded_data))
-
-
-    # Test 3
-    a_great_sentence = "UGEUVEBI:"
-
-    print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
-    print ("The content of the data is: {}\n".format(a_great_sentence))
-
-    encoded_data, tree = huffman_encoding(a_great_sentence)
-
-    print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
-    print ("The content of the encoded data is: {}\n".format(encoded_data))
-
-    decoded_data = huffman_decoding(encoded_data, tree)
-
-    print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
-    print ("The content of the encoded data is: {}\n".format(decoded_data))
+test_function([[1, 2, 3, 4, 5], [542, 31]])
+test_case = [[4, 6, 2, 5, 9, 8], [964, 852]]
+test_function(test_case)
+test_function([[], [-1, -1]])
+test_function([[0], [-1, -1]])
+test_function([[0, 0], [0, 0]])
+test_function([[1, 1, 1, 3, 5, 6], [631, 511]])
